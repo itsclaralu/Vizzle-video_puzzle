@@ -66,7 +66,27 @@ h5 {
 
 /*2. Header Styles*/
 
+.header-wrapper {
+	background-color: #fff;
+	color:#2D2D2D;
+}
+span.logo {
+	width: auto;
+    display: inline-block;
+}
+span.logo a {
+	display: block;
+}
+nav {
+	position: relative;
+	display: block;
+}
+
 /*3. Layer 1: The Game*/
+.first-layer {
+	background-color: #ddd;
+	color: #2D2D2D;
+}
 /*4. Layer 2: About*/
 /*5. Layer 3: Authors*/
 /*6. Layer 4: References*/
