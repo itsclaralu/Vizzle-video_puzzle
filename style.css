@@ -1,0 +1,72 @@
+/*1. GENERAL STYLES*/
+
+*, *:before, *:after{
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Exo', sans-serif;
+	height: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	display: block;
+}
+
+head {
+	display: none;
+}
+
+body {
+	font-weight: 300;
+	font-style: normal;
+	font-size: 100%;
+	cursor: auto;
+}
+
+div {
+	display: block;
+}
+
+img {
+  	border: 0;
+}
+
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+	line-height: 1;
+	font-weight: 300;
+	color: #685F74;
+	-webkit-font-smoothing: antialiased;
+}
+h1 {
+	font-size: 24pt;
+	font-style: bold;
+}
+h2 {
+	font-size: 18pt;
+}
+h3 {
+	font-size: 12pt;
+}
+h4 {
+	font-size: 11pt;
+}
+h5 {
+	font-size: 8pt;
+}
+
+/*2. Header Styles*/
+
+/*3. Layer 1: The Game*/
+/*4. Layer 2: About*/
+/*5. Layer 3: Authors*/
+/*6. Layer 4: References*/
+/*7. Footer Styles*/
