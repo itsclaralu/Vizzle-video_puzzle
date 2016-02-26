@@ -4,10 +4,12 @@
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-	font-family: 'Exo', sans-serif;
+	font-family: sans-serif;
 	height: 100%;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -24,6 +26,7 @@ body {
 	font-style: normal;
 	font-size: 100%;
 	cursor: auto;
+	width: 100%;
 }
 
 div {
@@ -36,6 +39,7 @@ img {
 
 ul {
 	list-style: none;
+	margin: 0;
 }
 a {
 	text-decoration: none;
@@ -69,17 +73,36 @@ h5 {
 .header-wrapper {
 	background-color: #fff;
 	color:#2D2D2D;
+	height: 103px;
 }
 span.logo {
-	width: auto;
     display: inline-block;
+    width: 20%;
+    height: 100%;
 }
 span.logo a {
 	display: block;
+	padding: 0.5em 1em;
+}
+span.logo a img {
+	max-width: 250px;
 }
 nav {
-	position: relative;
-	display: block;
+    display: inline-block;
+    width: 70%
+}
+
+.header-wrapper nav ul {
+	height: 100%;
+	float: right;
+	margin: 1em;
+}
+.nav-item {
+	display: inline-block;
+	font-size: 14pt;
+}
+.nav-item a {
+	padding: 1em 2.5em;
 }
 
 /*3. Layer 1: The Game*/
@@ -87,7 +110,19 @@ nav {
 	background-color: #ddd;
 	color: #2D2D2D;
 }
+.game {
+	height: 100%;
+}
 /*4. Layer 2: About*/
+.second-layer {
+	background-color: #A846A0;
+	color: #fff;
+}
+.second-layer div h2{
+	font-weight: 400;
+	color: #fff;
+	padding: 0.5em 1em;
+}
 /*5. Layer 3: Authors*/
 /*6. Layer 4: References*/
 /*7. Footer Styles*/
