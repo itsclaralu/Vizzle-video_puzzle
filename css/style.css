@@ -110,13 +110,21 @@ nav {
 	background-color: #ddd;
 	color: #2D2D2D;
 }
-.game {
+.first-layer div {
 	height: 100%;
+    padding: 2em;
+    width: 90%;
 }
+
 /*4. Layer 2: About*/
 .second-layer {
 	background-color: #A846A0;
 	color: #fff;
+}
+.second-layer div {
+	height: 100%;
+    padding: 2em;
+    width: 90%;
 }
 .second-layer div h2{
 	font-weight: 400;
