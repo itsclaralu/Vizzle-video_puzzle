@@ -66,6 +66,8 @@ h2 {
 }
 h3 {
 	font-size: 18pt;
+	font-weight: 400;
+	padding: 0.5em 0em;
 }
 h4 {
 	font-size: 14pt;
@@ -75,6 +77,7 @@ h5 {
 }
 p {
 	font-size: 18pt;
+	text-rendering: optimizeLegibility;
 }
 /*2. Header Styles*/
 
@@ -177,5 +180,34 @@ section div {
 .fourth-layer {
 	background-color: #2D2D2D;
 	color: #fff;
+}
+.author-wrapper {
+	display: inline-block;
+    width: 30%;
+    margin: 1%;
+    text-align: center;
+}
+.author-wrapper img {
+	max-width: 50%;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.author-wrapper img#pink {
+	border: 5px solid #A846A0;
+}
+.author-wrapper img#green {
+	border: 5px solid #04E8A0;
+}
+.author-wrapper img#gray {
+	border: 5px solid #ddd;
+}
+.author-wrapper div {
+	width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+.author-wrapper div p {
+	font-size: 12pt;
+	text-align: left;
 }
 /*7. Footer Styles*/
