@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" href="/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
-		<link href='https://fonts.googleapis.com/css?family=Exo:400,300,500,400italic,300italic,600' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Exo:400,300,400italic,500,600' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
 		<!--<link rel="alternate" href="https://vizzle.com" hreflang="x-default">-->
 		<!--TODO: Enlazar a archivo CSS-->
@@ -21,40 +21,66 @@
 		<header class="header-wrapper">
 			<span class="logo">
 				<a href="/">
-					<img src="images/vizzle_horizontal.svg" alt="Vizzle Logotype"></img>
+					<img src="images/vizzle_horizontal.svg" alt="Vizzle Logotype">
 				</a>
 			</span>
 			<nav>
 				<ul>
 					<li class="nav-item">
-						<a id="about">About</a>
-					</li>
-					<li class="nav-item">
-						<a id="authors">Authors</a>
+						<a href=#about>About</a>
 					</li>
 					<li class="nav-item">
 						<a id="references">References</a>
+					</li>
+					<li class="nav-item">
+						<a id="authors">Authors</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		<section class="first-layer">
-			<div class="game">
+			<div class="wrapper">
 				<h1>Aquí va el juego</h1>
 			</div>
 		</section>
-		<section class="second-layer">
-			<div>
+		<section class="second-layer" id="about">
+			<div class="wrapper">
 				<h2>Instructions for dummies</h2>
-				<p>Push the play button</p>
-				<p>Drag and drop the puzzle tiles</p>
-			</div>
-			<div>
+				<div class="instructions">
+					<div>
+						<p>Push the play button</p>
+						<img src="images/vizzle_play.svg" alt="play_button">
+					</div>
+					<div>
+						<img src="images/vizzle_puzzle_white.svg" alt="">
+						<p>Drag and drop the puzzle tiles</p>
+					</div>
+				</div>
 				<h2>Contact:</h2>
-				<p>If you've got any issues or requests send us an e-mail to:</p>
-				<span>
-					<a href="mailto:vizzle.contact@gmail.com?subject=Vizzle Issue"></a> 
-				</span>
+				<div class="contact">
+					<p>If you've got any issues or requests send us an e-mail to:</p>
+					<span class="e-mail">
+						<a href="mailto:vizzle.contact@gmail.com?subject=Vizzle Issue">vizzle.contact@gmail.com</a>
+					</span>
+					<div class="rrss">
+						<a href="https://twitter.com/vizzle_contact">
+							<img class="tw" src="images/TwitterLogo_white.png" alt="twitter_logo">
+						</a>
+						<a href="https://www.facebook.com/vizzle.contact">
+							<img class="fb" src="images/FB-f-Logo__white_100.png" alt="facebook_logo">
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="third-layer">
+			<div class="wrapper">
+				<h2>References</h2>
+			</div>
+		</section>
+		<section class="fourth-layer">
+			<div class="wrapper">
+				<h2>Who are we?</h2>
 			</div>
 		</section>
 	</body>
