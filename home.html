@@ -2,7 +2,6 @@
 
 <html lang="es">
 	<head>
-		<!--TODO: Generar URL-->
 		<title>Vizzle: The Video Puzzle</title>
 		<meta name="application-name" content="Vizzle">
 		<meta name="description" content="The video puzzles online game.">
@@ -14,8 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 		<link href='https://fonts.googleapis.com/css?family=Exo:400,300,400italic,500,600' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/javascript.js"></script>
 		<!--<link rel="alternate" href="https://vizzle.com" hreflang="x-default">-->
-		<!--TODO: Enlazar a archivo CSS-->
 	</head>
 	<body>
 		<header class="header-wrapper">
@@ -41,6 +40,14 @@
 		<section class="first-layer">
 			<div class="wrapper">
 				<h1>Aquí va el juego</h1>
+				<div class="game-container">
+				  <div class="game-bar">
+				    <span class="button"></span>
+				    <span>
+				      <p id="counter"></p>
+				    </span>
+				  </div>
+				</div>
 			</div>
 		</section>
 		<section class="second-layer" id="about">

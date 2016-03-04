@@ -1,0 +1,12 @@
+<script>
+
+  function timing() {
+    var start = Date.now();
+    var i = 0;
+    function counter() {
+      var now = Date.now();
+/*PENDIENTE*/
+    counter();
+    var aux = setInterval(counter, 1000);
+  }
+</script>
