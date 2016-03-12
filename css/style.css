@@ -110,23 +110,17 @@ span.logo a img {
     float: right
 }
 
-.header-wrapper nav ul li {
-	display: inline-block;
-    font-size: 14pt;
-    font-weight: 400;
-}
-
-.header-wrapper nav ul li a {
-    padding: 0 2.5em;
-    display: inline-block;
-}
-
 .nav-item {
 	display: inline-block;
 	font-size: 14pt;
 	font-weight: 400;
 	padding: 0 2.5em;
 }
+
+.nav-item a {
+    display: inline-block;
+}
+
 .wrapper{
     margin: 0 auto;
 }
@@ -139,6 +133,40 @@ section div {
 .first-layer {
 	background-color: #ddd;
 	color: #2D2D2D;
+}
+
+.game-container {
+	display: inline-block;
+    width: 95%;
+    margin: 2% 4%;
+}
+
+.game-bar { 
+    width: 100%;
+    background-color: #04E8A0;
+    display: inline-block;
+    padding: 0.5em 5em;
+}
+.button {
+    display: inline-block;
+    float: left
+}
+
+.button img{
+	max-width: 30px;
+    display: inline-block;
+}
+
+.counter {
+	float: right;
+    color: #fff;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 0.5%;
+}
+.counter p {
+	font-family: 'Exo', sans-serif;
+	font-weight: 600;
 }
 
 /*4. Layer 2: About*/
@@ -201,7 +229,7 @@ section div {
     text-align: center;
 }
 .author-wrapper img {
-	max-width: 50%;
+	max-width: 45%;
     border-radius: 50%;
     box-sizing: border-box;
 }
