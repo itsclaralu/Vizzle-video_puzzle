@@ -88,6 +88,7 @@ p {
 }
 span.logo {
     display: inline-block;
+    vertical-align: top;
     width: 20%;
     height: 100%;
 }
@@ -98,16 +99,28 @@ span.logo a {
 span.logo a img {
 	max-width: 250px;
 }
-nav {
+.header-wrapper nav {
     display: inline-block;
-    width: 70%
+    width: 75%;
+    line-height: 103px;
 }
 
 .header-wrapper nav ul {
-	height: 100%;
-	float: right;
-	margin: 1em;
+    height: 100%;
+    float: right
 }
+
+.header-wrapper nav ul li {
+	display: inline-block;
+    font-size: 14pt;
+    font-weight: 400;
+}
+
+.header-wrapper nav ul li a {
+    padding: 0 2.5em;
+    display: inline-block;
+}
+
 .nav-item {
 	display: inline-block;
 	font-size: 14pt;
