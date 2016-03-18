@@ -13,17 +13,11 @@ function counter() {
   var now = new Date(); //Variable that stores the present's date
   /*Time spent is the difference between now and start*/
   var displayedSec = now.getSeconds() - start.getSeconds();
-  console.log("Sec: " + displayedSec);
   var displayedMin = now.getMinutes() - start.getMinutes();
-  console.log("Min: " + displayedMin);
   var displayedHours = now.getHours() - start.getHours();
-  console.log("H: " + displayedHours);
-  var displayedDate =  new Date(0, 0, 0, displayedHours, displayedMin, displayedSec);
-      
+  displayedDate = displayedHours+":"+displayedMin+":"+displayedSec;
   /*Showing the result*/
-  console.log(displayedDate);
-  document.getElementById("game-counter").innerHTML = displayedDate.toLocaleTimeString();
-  console.log(displayedDate);
+   document.getElementById("game-counter").innerHTML = displayedDate;
 }
 
 /* Switching the button to play/pause*/
