@@ -199,12 +199,12 @@ section div {
 }
 .rrss a .tw {
 	display: inline-block;
-	max-height: 100px;
+	max-height: 55px;
 }
 .rrss a .fb {
-	display: inline-block;
-	max-height: 65px;
-	margin-bottom: 1em;
+    display: inline-block;
+    max-height: 30px;
+    margin-bottom: 10px;
 }
 .e-mail {
 	font-family: 'Exo', sans-serif;
@@ -222,10 +222,10 @@ section div {
 	background-color: #2D2D2D;
 	color: #fff;
 }
+
 .author-wrapper {
 	display: inline-block;
-    width: 30%;
-    margin: 1%;
+	width: 33%;
     text-align: center;
 }
 .author-wrapper img {
