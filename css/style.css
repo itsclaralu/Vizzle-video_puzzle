@@ -84,7 +84,7 @@ p {
 .header-wrapper {
 	background-color: #fff;
 	color:#2D2D2D;
-	height: 103px;
+	height: 75px;
 }
 span.logo {
     display: inline-block;
@@ -97,12 +97,12 @@ span.logo a {
 	padding: 0.5em 1em;
 }
 span.logo a img {
-	max-width: 250px;
+	max-width: 180px;
 }
 .header-wrapper nav {
     display: inline-block;
     width: 75%;
-    line-height: 103px;
+    line-height: 75px;
 }
 
 .header-wrapper nav ul {
@@ -126,7 +126,7 @@ span.logo a img {
 }
 section div {
 	height: 100%;
-    padding: 2em;
+    padding: 1em 2em;
     width: 90%;
 }
 /*3. Layer 1: The Game*/
@@ -139,6 +139,11 @@ section div {
 	display: inline-block;
     width: 95%;
     margin: 2% 4%;
+}
+
+.game-container canvas {
+	width: 100%;
+	background-color: #222;
 }
 
 .game-bar { 

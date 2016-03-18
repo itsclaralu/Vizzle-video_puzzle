@@ -41,5 +41,6 @@ function switchButton() {
       button.setAttribute("id", "play-button");
       //TODO: Aquí hacemos que se pause el juego
       clearInterval(timer);
+      //TODO: Ajustar counter cuando el juego se pausa; guardar fecha en la que se pausa para que no acumule el tiempo.
   }
 }
