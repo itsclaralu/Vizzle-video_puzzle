@@ -1,5 +1,6 @@
 /* Variables: */
 var clickCounter = 0; //Will be != 1 if we've already launched the game
+var seconds = 0; //Second counter
 var start;
 var timer;
 
@@ -10,14 +11,26 @@ window.onload = function() {
 }
 
 function counter() {
-  var now = new Date(); //Variable that stores the present's date
+  //var now = new Date(); //Variable that stores the present's date
   /*Time spent is the difference between now and start*/
-  var displayedSec = now.getSeconds() - start.getSeconds();
-  var displayedMin = now.getMinutes() - start.getMinutes();
-  var displayedHours = now.getHours() - start.getHours();
-  displayedDate = displayedHours+":"+displayedMin+":"+displayedSec;
+  //var displayedSec = now.getSeconds() - start.getSeconds();
+  //var displayedMin = now.getMinutes() - start.getMinutes();
+  //var displayedHours = now.getHours() - start.getHours();
+  //displayedDate = displayedHours+":"+displayedMin+":"+displayedSec;
   /*Showing the result*/
-   document.getElementById("game-counter").innerHTML = displayedDate;
+  // document.getElementById("game-counter").innerHTML = displayedDate;
+  seconds++;
+  var hours = Math.floor(seconds/3600);
+  var minutes = Math.floor(((seconds/3600)%1)*60); //%1 extracts decimal part of hours
+  console.log("horas: "+hours);
+  console.log("minutos: "+minutes);
+  console.log("segundos: "+seconds);
+  date = new Date(null, null, null, hours, minutes, seconds, null); //We don't need to show year, month, day or millisecs
+  date = date.toTimeString().split(" ");
+  displayedDate = date[0];
+  console.log("Date: "+displayedDate);
+  /*Showing the result*/
+  document.getElementById("game-counter").innerHTML = displayedDate;
 }
 
 /* Switching the button to play/pause*/
@@ -28,7 +41,7 @@ function switchButton() {
       button.setAttribute("id", "pause-button");
       if( clickCounter == 1) { // Launch the game
            //TODO: Aquí hacemos que comience el juego
-          start = new Date(); //Variable that stores the date when play button is pushed
+          //start = new Date(); //Variable that stores the date when play button is pushed
           counter();
           timer = setInterval(counter, 1000); //We need to execute counter() each second (1000 miliseconds)
       }else { // Resume the game
