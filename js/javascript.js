@@ -11,14 +11,6 @@ window.onload = function() {
 }
 
 function counter() {
-  //var now = new Date(); //Variable that stores the present's date
-  /*Time spent is the difference between now and start*/
-  //var displayedSec = now.getSeconds() - start.getSeconds();
-  //var displayedMin = now.getMinutes() - start.getMinutes();
-  //var displayedHours = now.getHours() - start.getHours();
-  //displayedDate = displayedHours+":"+displayedMin+":"+displayedSec;
-  /*Showing the result*/
-  // document.getElementById("game-counter").innerHTML = displayedDate;
   seconds++;
   var hours = Math.floor(seconds/3600);
   var minutes = Math.floor(((seconds/3600)%1)*60); //%1 extracts decimal part of hours
@@ -26,10 +18,12 @@ function counter() {
   console.log("minutos: "+minutes);
   console.log("segundos: "+seconds);
   date = new Date(null, null, null, hours, minutes, seconds, null); //We don't need to show year, month, day or millisecs
-  date = date.toTimeString().split(" ");
-  displayedDate = date[0];
-  console.log("Date: "+displayedDate);
   /*Showing the result*/
+  console.log("date (objeto Date): "+date);
+  date = date.toTimeString().split(" ");
+  console.log("date tras split: "+date);
+  displayedDate = date[0]; //To erase the GMT part of the date string
+  console.log("Date: "+displayedDate);
   document.getElementById("game-counter").innerHTML = displayedDate;
 }
 

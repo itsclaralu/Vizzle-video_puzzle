@@ -54,15 +54,15 @@ h1, h2, h3, h4, h5, h6, p{
 }
 h1 {
 	font-family: 'Exo', sans-serif;
-	font-size: 30pt;
+	font-size: 32pt;
 	font-weight: 600;
-	padding: 1em 1em;
+	padding: 1em;
 }
 h2 {
-	font-family: 'Exo', sans-serif;
-	font-size: 24pt;
-	font-weight: 500;
-	padding: 0.5em 1em;
+    font-family: 'Exo', sans-serif;
+    font-size: 28pt;
+    font-weight: 500;
+    padding: 1em;
 }
 h3 {
 	font-size: 18pt;
@@ -127,7 +127,6 @@ span.logo a img {
 section div {
 	height: 100%;
     padding: 1em 2em;
-    width: 90%;
 }
 /*3. Layer 1: The Game*/
 .first-layer {
@@ -136,9 +135,8 @@ section div {
 }
 
 .game-container {
-	display: inline-block;
-    width: 95%;
-    margin: 2% 4%;
+    margin: 0 auto;
+    width: 85%;
 }
 
 .game-container canvas {
@@ -150,7 +148,6 @@ section div {
     width: 100%;
     background-color: #04E8A0;
     display: inline-block;
-    padding: 0.5em 5em;
 }
 .button {
     display: inline-block;
@@ -178,6 +175,7 @@ section div {
 .second-layer {
 	background-color: #A846A0;
 	color: #fff;
+    padding: 2em;
 }
 .wrapper div {
 	padding: 0.5em 5em;
@@ -199,17 +197,28 @@ section div {
 }
 .rrss a{
 	display: inline-block;
-    width: 75px;
-    margin: 1em 7em;
+    margin: 0.5em 10em;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
-.rrss a .tw {
+.tw {
 	display: inline-block;
 	max-height: 55px;
 }
-.rrss a .fb {
+.tw:hover {
+	filter: drop-shadow(0px 0px 2px #55ACEE);
+	-webkit-filter: drop-shadow(0px 0px 2px #55ACEE);
+}
+.fb {
     display: inline-block;
     max-height: 30px;
     margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+.fb:hover {
+	filter: drop-shadow(0px 0px 3px #3B5999);
+	-webkit-filter: drop-shadow(0px 0px 3px #3B5999);
 }
 .e-mail {
 	font-family: 'Exo', sans-serif;
@@ -221,11 +230,13 @@ section div {
 .third-layer {
 	background-color: #04E8A0;
 	color: #fff;
+    padding: 2em;
 }
 /*6. Layer 4: Authors*/
 .fourth-layer {
 	background-color: #2D2D2D;
 	color: #fff;
+    padding: 2em;
 }
 
 .author-wrapper {
