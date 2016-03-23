@@ -103,7 +103,7 @@ span.logo a img {
 .header-wrapper nav {
     display: inline-block;
     width: 75%;
-    line-height: 75px;
+    line-height: 72px;
 }
 
 .header-wrapper nav ul {
@@ -116,10 +116,21 @@ span.logo a img {
 	font-size: 14pt;
 	font-weight: 400;
 	padding: 0 2.5em;
+    transition: all 0.1s ease-in-out;
 }
 
 .nav-item a {
     display: inline-block;
+}
+
+#nav-about:hover {
+	border-bottom: 3px solid #A846A0;
+}
+#nav-references:hover {
+	border-bottom: 3px solid #04E8A0;
+}
+#nav-authors:hover {
+	border-bottom: 3px solid #2D2D2D;
 }
 
 .wrapper{
@@ -142,7 +153,7 @@ section div {
 
 .game-container canvas {
 	width: 100%;
-	background-color: #222;
+	background-color: #2D2D2D;
 }
 
 .game-bar { 
@@ -246,23 +257,23 @@ section div {
     text-align: center;
 }
 .author-wrapper img {
-	max-width: 45%;
+	max-width: 50%;
+	border: 3px solid;
     border-radius: 50%;
     box-sizing: border-box;
 }
 .author-wrapper img#pink {
-	border: 5px solid #A846A0;
+	border-color: #A846A0;
 }
 .author-wrapper img#green {
-	border: 5px solid #04E8A0;
+	border-color: #04E8A0;
 }
 .author-wrapper img#gray {
-	border: 5px solid #ddd;
+	border-color: #ddd;
 }
 .author-wrapper div {
 	width: 90%;
     margin: 0 auto;
-    line-height: 1.5;
 }
 .author-wrapper div p {
 	font-size: 12pt;
