@@ -27,6 +27,7 @@ body {
 	font-size: 100%;
 	cursor: auto;
 	width: 100%;
+	font-size: 16pt;
 }
 
 div {
@@ -77,7 +78,6 @@ h5 {
 	font-size: 10pt;
 }
 p {
-	font-size: 16pt;
 	text-rendering: optimizeLegibility;
 }
 /*2. Header Styles*/
@@ -111,6 +111,9 @@ span.logo a img {
     float: right
 }
 
+nav label, nav input {
+	display: none;
+}
 .nav-item {
 	display: inline-block;
 	font-size: 14pt;
@@ -138,7 +141,7 @@ span.logo a img {
 }
 section div {
 	height: 100%;
-    padding: 1em 2em;
+    padding: 1em 0em;
 }
 /*3. Layer 1: The Game*/
 .first-layer {
@@ -156,14 +159,15 @@ section div {
 	background-color: #2D2D2D;
 }
 
-.game-bar { 
+.game-bar {
     width: 100%;
     background-color: #04E8A0;
     display: inline-block;
 }
 .button {
     display: inline-block;
-    float: left
+    float: left;
+	margin: 0 1em;
 }
 
 .button img{
@@ -176,7 +180,7 @@ section div {
     color: #fff;
     vertical-align: middle;
     display: inline-block;
-    padding-top: 0.5%;
+	margin: 0.5% 1em 0;
 }
 .counter p {
 	font-family: 'Exo', sans-serif;
@@ -187,29 +191,32 @@ section div {
 .second-layer {
 	background-color: #A846A0;
 	color: #fff;
-    padding: 2em;
+    padding: 5%;
 }
-.wrapper div {
-	padding: 0.5em 5em;
+.wrapper > div {
+	padding: 0.5em 10%;
 }
 .instructions div img {
-	max-width: 30px;
+	width: 30px;
+	max-width: 30%;
 	display: inline-block;
-	margin: 0 2em;
+	margin: 0 5%;
 }
 .instructions div p {
 	padding: 0.5em 0;
 	display: inline-block;
+	max-width: 65%;
 }
-.contact p{
+.contact p {
 	display: inline-block;
 }
 .rrss {
 	margin: 0 auto;
 }
-.rrss a{
+.rrss a {
 	display: inline-block;
-    margin: 0.5em 10em;
+	width: 48%;
+	text-align: center;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
@@ -242,19 +249,20 @@ section div {
 .third-layer {
 	background-color: #04E8A0;
 	color: #fff;
-    padding: 2em;
+    padding: 5%;
 }
 /*6. Layer 4: Authors*/
 .fourth-layer {
 	background-color: #2D2D2D;
 	color: #fff;
-    padding: 2em;
+    padding: 5%;
 }
 
 .author-wrapper {
 	display: inline-block;
-	width: 33%;
+	width: 32%;
     text-align: center;
+	vertical-align: top;
 }
 .author-wrapper img {
 	max-width: 50%;
@@ -280,3 +288,102 @@ section div {
 	text-align: left;
 }
 /*7. Footer Styles*/
+
+
+/* Media queries */
+@media (max-width: 920px) {
+}
+@media (max-width: 680px) {
+	nav {
+		float: right;
+		width: auto !important;
+		position: relative;
+		height: 100%;
+	}
+	nav label {
+		display: block;
+		margin-top: 26px;
+		margin-right: 30px;
+		padding-bottom: 16px;
+	}
+	nav label span {
+		display: block;
+		position: relative;
+		width: 30px;
+		height: 3px;
+		background-color: #222;
+		cursor: pointer;
+	}
+	nav label span:after, nav label span:before {
+		position: absolute;
+		content: '';
+		width: 30px;
+		height: 3px;
+		background-color: #222;
+	}
+	nav label span:after {
+		margin-top: 16px;
+	}
+	nav label span:before {
+		margin-top: 8px;
+	}
+	nav ul {
+		display: none;
+		position: absolute;
+		top: 72px;
+		right: 0;
+		height: auto !important;
+		background: white;
+	}
+	nav input:checked + ul {
+		display: block;
+	}
+	nav ul li {
+		border-bottom: 1px solid #ddd;
+	}
+	nav ul li:last-child {
+		border: none;
+	}
+	.nav-item {
+		display: block;
+		z-index: 100;
+	}
+	.nav-item:hover {
+		border: none !important;
+	}
+	.rrss a {
+		display: block;
+		margin: 0 auto;
+	}
+	.fourth-layer .author-wrapper {
+		width: 49%;
+		margin: 1em auto;
+	}
+	.fourth-layer .author-wrapper:last-child {
+		display: block;
+	}
+}
+@media (max-width: 420px) {
+	.second-layer div h2 {
+		padding: 5%;
+	}
+	.second-layer .e-mail {
+		font-size: .8em;
+	}
+	.third-layer div {
+		padding: 0;
+	}
+	.third-layer div h2 {
+		text-align: center;
+		padding: 5%;
+	}
+	.fourth-layer div {
+		padding: 0;
+	}
+	.fourth-layer div h2{
+		text-align: center;
+	}
+	.fourth-layer .author-wrapper {
+		width: 100%;
+	}
+}
