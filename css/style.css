@@ -141,7 +141,7 @@ nav label, nav input {
 }
 section div {
 	height: 100%;
-    padding: 1em 0em;
+    padding: 0.5em 1em;
 }
 /*3. Layer 1: The Game*/
 .first-layer {
@@ -180,7 +180,7 @@ section div {
     color: #fff;
     vertical-align: middle;
     display: inline-block;
-	margin: 0.5% 1em 0;
+	margin: 1% 1em 0;
 }
 .counter p {
 	font-family: 'Exo', sans-serif;

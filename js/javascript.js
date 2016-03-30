@@ -3,6 +3,7 @@ var clickCounter = 0; //Will be != 1 if we've already launched the game
 var seconds = 0; //Second counter
 var start;
 var timer;
+var minutes = 0;
 
 /* Initial set ups*/
 window.onload = function() {
@@ -11,9 +12,9 @@ window.onload = function() {
 }
 
 function counter() {
-  seconds++;
   var hours = Math.floor(seconds/3600);
-  var minutes = Math.floor(((seconds/3600)%1)*60); //%1 extracts decimal part of hours
+  //var minutes = Math.floor(((seconds/3600)%1)*60); //%1 extracts decimal part of hours
+  seconds++;
   console.log("horas: "+hours);
   console.log("minutos: "+minutes);
   console.log("segundos: "+seconds);
@@ -25,6 +26,10 @@ function counter() {
   displayedDate = date[0]; //To erase the GMT part of the date string
   console.log("Date: "+displayedDate);
   document.getElementById("game-counter").innerHTML = displayedDate;
+  if(seconds >= 60) {
+    seconds = 0;
+    minutes++
+  }
 }
 
 /* Switching the button to play/pause*/
