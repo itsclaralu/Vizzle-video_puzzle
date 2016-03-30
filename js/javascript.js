@@ -8,7 +8,12 @@ var minutes = 0;
 /* Initial set ups*/
 window.onload = function() {
   button = document.getElementById("play-button");
+  var canvas = document.getElementById('game-screen');
+  if(canvas && canvas.getContext) { //Checking if the nav is compatible
+    var context = canvas.getContext('2d');
+  }
   button.addEventListener('click', switchButton);
+  canvas.addEventListener('click', drawBoard);
 }
 
 function counter() {
