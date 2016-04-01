@@ -1,4 +1,11 @@
-/* Variables: */
+/* Global variables*/
+var xPosition = 0;
+var yPosition = 0;
+var numberPieces = 16;
+var puzzleWidth = 0;
+var puzzleHeight = 0;
+var pieceWidth = 0;
+var pieceHeight = 0; 
 var clickCounter = 0; //Will be != 1 if we've already launched the game
 var seconds = 0; //Second counter
 var start;
@@ -8,12 +15,10 @@ var minutes = 0;
 /* Initial set ups*/
 window.onload = function() {
   button = document.getElementById("play-button");
-  var canvas = document.getElementById('game-screen');
-  if(canvas && canvas.getContext) { //Checking if the nav is compatible
-    var context = canvas.getContext('2d');
-  }
+  //canvas = document.getElementById('game-screen');
   button.addEventListener('click', switchButton);
-  canvas.addEventListener('click', drawBoard);
+  //canvas.addEventListener('click', drawBoard);
+  drawBoard();
 }
 
 function counter() {
@@ -43,21 +48,55 @@ function switchButton() {
       clickCounter++;
       button.setAttribute("src", "images/vizzle_pause.svg");
       button.setAttribute("id", "pause-button");
-      if( clickCounter == 1) { // Launch the game
-           //TODO: Aquí hacemos que comience el juego
+      if(clickCounter == 1) { // Launch the game
           //start = new Date(); //Variable that stores the date when play button is pushed
           counter();
           timer = setInterval(counter, 1000); //We need to execute counter() each second (1000 miliseconds)
       }else { // Resume the game
-          //TODO: Aquí hacemos que se reanude el juego
           timer = setInterval(counter, 1000);
       }
   }else { // Game paused
       clickCounter++;
       button.setAttribute("src", "images/vizzle_play.svg");
       button.setAttribute("id", "play-button");
-      //TODO: Aquí hacemos que se pause el juego
       clearInterval(timer);
-      //TODO: Ajustar counter cuando el juego se pausa; guardar fecha en la que se pausa para que no acumule el tiempo.
+  }
+}
+
+//function canvas() {
+//  if(canvas && canvas.getContext) { //Checking if the nav is compatible
+//    var context = canvas.getContext('2d');
+//    context.fillRect(50, 0, 10, 150);
+//  }
+//}
+
+function drawBoard() {
+  var canvas = document.getElementById("game-screen");
+  var container = document.getElementById("prueba");
+  if(canvas && canvas.getContext) { //Checking if the nav is compatible
+    var context = canvas.getContext('2d');
+    // Drawing the game board
+    puzzleWidth = container.offsetWidth;
+    console.log("Ancho del puzzle"+ puzzleWidth);
+    puzzleHeight = container.offsetHeight;
+    console.log("Alto del puzzle"+ puzzleHeight);
+    pieceWidth = puzzleWidth/Math.sqrt(numberPieces);
+    console.log("Ancho de las piezas"+ pieceWidth);
+    pieceHeight = puzzleHeight/Math.sqrt(numberPieces);
+    console.log("Alto de las piezas"+ pieceHeight);
+    canvas.width = puzzleWidth;
+    canvas.height = puzzleHeight;
+    for(i = 0; i <20; i++) {
+      context.fillStyle= "red";
+      context.fillRect(xPosition, yPosition, pieceWidth, pieceHeight);
+      context.strokeRect(xPosition, yPosition, pieceWidth, pieceHeight);
+      xPosition += pieceWidth;
+      if(xPosition>puzzleWidth) {
+        yPosition += pieceHeight;
+        xPosition = 0;
+      }
+    }
+  }else { // Canvas-unsupported code
+    // TODO: Añadir nodo al DOM con un p que diga que no se pue
   }
 }
