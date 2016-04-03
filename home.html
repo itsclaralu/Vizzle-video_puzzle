@@ -44,7 +44,11 @@
 				<div class="game-container">
 					<div id ="puzzle-board">
 						<canvas id="game-screen">
-							Lo sentimos, tu navegador no es compatible con canvas
+							<video id="video" preload="auto">
+   								<source src="video-resources/sample.mp4" type=video/mp4>
+   								Your browser does not support HTML5 video.
+							</video>
+							Your browser does not support canvas.
 						</canvas>
 					</div>
 				  <div class="game-bar">
@@ -56,9 +60,6 @@
 				    </span>
 				  </div>
 				</div>
-										<video id="video" autoplay="autoplay">
-   							<source src="video-resources/sample.mp4" type=video/mp4>
-						</video>
 			</div>
 		</section>
 		<section class="second layer" id="about">

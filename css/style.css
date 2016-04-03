@@ -143,6 +143,9 @@ section > div {
 .layer {
 	padding: 0.5em 10%;
 }
+video#video {
+	display: none;
+}
 /*3. Layer 1: The Game*/ 
 .first {
 	background-color: #ddd;

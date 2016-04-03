@@ -16,6 +16,9 @@ var canvas;
 var container;
 var context;
 var pieces = [];
+var cursor;
+var thisPiece;
+var thisDroppedPiece;
 
 /* Initial set ups*/
 window.onload = function() {
@@ -24,14 +27,18 @@ window.onload = function() {
   canvas = document.getElementById("game-screen");
   container = document.getElementById("puzzle-board");
   video = document.getElementById("video");
+  /*video.addEventListener('play', function () { 
+      drawVideo(video, context, puzzleWidth, puzzleHeight);
+      setInterval(drawVideo, 1000/60); //Play video at 60fps
+    });*/
+
   init();
-  
 }
 
 function init() {
   if(canvas && canvas.getContext) { //Checking if the nav is compatible
   context = canvas.getContext('2d');
-  // Drawing the game board
+  // Drawing the game board 
   puzzleWidth = container.offsetWidth;
   console.log("Ancho del puzzle"+ puzzleWidth);
   puzzleHeight = container.offsetHeight;
@@ -43,15 +50,27 @@ function init() {
   canvas.width = puzzleWidth;
   canvas.height = puzzleHeight;
   context.drawImage(video, 0, 0, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
+  /*video.play();
+  console.log("Reproduzco el video");*/
   createBoard();
+  document.onmousedown = shufflePuzzle;
   }else { // Canvas-unsupported code
     // TODO: Añadir nodo al DOM con un p que diga que no se pue
   }
 }
 
+function drawVideo(video, context, width, height) {
+  console.log("Ancho reproducción" + width);
+  console.log("Alto reproducción" + height);
+  if(this.video.paused || this.video.ended)
+    return false;
+  //else
+  this.context.drawImage(this.video, 0, 0, width, height, 0, 0, width, height);
+  //setTimeout(drawVideo, 1000/60); //Play video at 60fps
+}
+
 function counter() {
   var hours = Math.floor(seconds/3600);
-  //var minutes = Math.floor(((seconds/3600)%1)*60); //%1 extracts decimal part of hours
   seconds++;
   console.log("horas: "+hours);
   console.log("minutos: "+minutes);
@@ -77,7 +96,6 @@ function switchButton() {
       button.setAttribute("src", "images/vizzle_pause.svg");
       button.setAttribute("id", "pause-button");
       if(clickCounter == 1) { // Launch the game
-          //start = new Date(); //Variable that stores the date when play button is pushed
           counter();
           timer = setInterval(counter, 1000); //We need to execute counter() each second (1000 miliseconds)
       }else { // Resume the game
@@ -91,13 +109,6 @@ function switchButton() {
   }
 }
 
-//function canvas() {
-//  if(canvas && canvas.getContext) { //Checking if the nav is compatible
-//    var context = canvas.getContext('2d');
-//    context.fillRect(50, 0, 10, 150);
-//  }
-//}
-
 function createBoard() {
   var i, piece;
   var xAux = 0;
@@ -108,16 +119,15 @@ function createBoard() {
       piece.xPosition = xAux;
       piece.yPosition = yAux;
       pieces.push(piece);
-      /*context.fillStyle= "red";
+      context.fillStyle= "rgba(45,45,45,0.5)";
       context.fillRect(xAux, yAux, pieceWidth, pieceHeight);
-      context.strokeRect(xAux, yAux, pieceWidth, pieceHeight);*/
       xAux += pieceWidth;
       if(xAux > puzzleWidth) {
         yAux += pieceHeight;
         xAux = 0;
       }
     }
-    //document.onmousedown = shufflePuzzle;
+    document.onmousedown = shufflePuzzle;
   }else { // Canvas-unsupported code
     // TODO: Añadir nodo al DOM con un p que diga que no se pue
   }
@@ -145,16 +155,23 @@ function shufflePuzzle() {
   var xAux = 0;
   var yAux = 0;
   for(i = 0; i < pieces.length; i++) {
-    piece = pieces[i];
+    piece = pieces[0];
     piece.xPosition = xAux;
     piece.yPosition = yAux;
-    console.log("xPosition "+ xPosition)
     context.drawImage(video, piece.xPosition, piece.yPosition, pieceWidth, pieceHeight, xAux, yAux, pieceWidth, pieceHeight);
+    context.strokeStyle="#eee";
     context.strokeRect(xAux, yAux, pieceWidth, pieceHeight);
     xAux += pieceWidth;
+    console.log("xPosition "+ xPosition)
       if(xAux>puzzleWidth) {
         yAux += pieceHeight;
         xAux = 0;
       }
+    console.log("Iteración"+i);
   }
+  document.onmousedown = actionedPiece;
+}
+
+function actionedPiece() {
+
 }
