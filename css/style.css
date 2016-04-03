@@ -135,16 +135,16 @@ nav label, nav input {
 #nav-authors:hover {
 	border-bottom: 3px solid #2D2D2D;
 }
-
-.wrapper{
-    margin: 0 auto;
-}
-section div {
+section > div {
+	margin: 0 auto;
 	height: 100%;
     padding: 0.5em 1em;
 }
-/*3. Layer 1: The Game*/
-.first-layer {
+.layer {
+	padding: 0.5em 10%;
+}
+/*3. Layer 1: The Game*/ 
+.first {
 	background-color: #ddd;
 	color: #2D2D2D;
 }
@@ -154,8 +154,9 @@ section div {
     width: 85%;
 }
 
-div#prueba {
+div#puzzle-board {
 	width: 100%;
+	height: 450px;
 	background-color: #2D2D2D;
 }
 
@@ -163,6 +164,7 @@ div#prueba {
     width: 100%;
     background-color: #04E8A0;
     display: inline-block;
+    padding: 0.5em 1em;
 }
 .button {
     display: inline-block;
@@ -188,12 +190,12 @@ div#prueba {
 }
 
 /*4. Layer 2: About*/
-.second-layer {
+.second {
 	background-color: #A846A0;
 	color: #fff;
     padding: 5%;
 }
-.wrapper > div {
+.second div div {
 	padding: 0.5em 10%;
 }
 .instructions div img {
@@ -246,13 +248,13 @@ div#prueba {
 	display: inline-block;
 }
 /*5. Layer 3: References*/
-.third-layer {
+.third {
 	background-color: #04E8A0;
 	color: #fff;
     padding: 5%;
 }
 /*6. Layer 4: Authors*/
-.fourth-layer {
+.fourth {
 	background-color: #2D2D2D;
 	color: #fff;
     padding: 5%;
@@ -285,7 +287,6 @@ div#prueba {
 }
 .author-wrapper div p {
 	font-size: 12pt;
-	text-align: left;
 }
 /*7. Footer Styles*/
 
@@ -355,35 +356,35 @@ div#prueba {
 		display: block;
 		margin: 0 auto;
 	}
-	.fourth-layer .author-wrapper {
+	.fourth .author-wrapper {
 		width: 49%;
 		margin: 1em auto;
 	}
-	.fourth-layer .author-wrapper:last-child {
+	.fourth .author-wrapper:last-child {
 		display: block;
 	}
 }
 @media (max-width: 420px) {
-	.second-layer div h2 {
+	.second div h2 {
 		padding: 5%;
 	}
-	.second-layer .e-mail {
+	.second .e-mail {
 		font-size: .8em;
 	}
-	.third-layer div {
+	.third div {
 		padding: 0;
 	}
-	.third-layer div h2 {
+	.third div h2 {
 		text-align: center;
 		padding: 5%;
 	}
-	.fourth-layer div {
+	.fourth div {
 		padding: 0;
 	}
-	.fourth-layer div h2{
+	.fourth div h2{
 		text-align: center;
 	}
-	.fourth-layer .author-wrapper {
+	.fourth .author-wrapper {
 		width: 100%;
 	}
 }

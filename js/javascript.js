@@ -11,14 +11,42 @@ var seconds = 0; //Second counter
 var start;
 var timer;
 var minutes = 0;
+var video;
+var canvas;
+var container;
+var context;
+var pieces = [];
 
 /* Initial set ups*/
 window.onload = function() {
   button = document.getElementById("play-button");
-  //canvas = document.getElementById('game-screen');
   button.addEventListener('click', switchButton);
-  //canvas.addEventListener('click', drawBoard);
-  drawBoard();
+  canvas = document.getElementById("game-screen");
+  container = document.getElementById("puzzle-board");
+  video = document.getElementById("video");
+  init();
+  
+}
+
+function init() {
+  if(canvas && canvas.getContext) { //Checking if the nav is compatible
+  context = canvas.getContext('2d');
+  // Drawing the game board
+  puzzleWidth = container.offsetWidth;
+  console.log("Ancho del puzzle"+ puzzleWidth);
+  puzzleHeight = container.offsetHeight;
+  console.log("Alto del puzzle"+ puzzleHeight);
+  pieceWidth = puzzleWidth/Math.sqrt(numberPieces);
+  console.log("Ancho de las piezas"+ pieceWidth);
+  pieceHeight = puzzleHeight/Math.sqrt(numberPieces);
+  console.log("Alto de las piezas"+ pieceHeight);
+  canvas.width = puzzleWidth;
+  canvas.height = puzzleHeight;
+  context.drawImage(video, 0, 0, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
+  createBoard();
+  }else { // Canvas-unsupported code
+    // TODO: Añadir nodo al DOM con un p que diga que no se pue
+  }
 }
 
 function counter() {
@@ -70,33 +98,63 @@ function switchButton() {
 //  }
 //}
 
-function drawBoard() {
-  var canvas = document.getElementById("game-screen");
-  var container = document.getElementById("prueba");
+function createBoard() {
+  var i, piece;
+  var xAux = 0;
+  var yAux = 0;
   if(canvas && canvas.getContext) { //Checking if the nav is compatible
-    var context = canvas.getContext('2d');
-    // Drawing the game board
-    puzzleWidth = container.offsetWidth;
-    console.log("Ancho del puzzle"+ puzzleWidth);
-    puzzleHeight = container.offsetHeight;
-    console.log("Alto del puzzle"+ puzzleHeight);
-    pieceWidth = puzzleWidth/Math.sqrt(numberPieces);
-    console.log("Ancho de las piezas"+ pieceWidth);
-    pieceHeight = puzzleHeight/Math.sqrt(numberPieces);
-    console.log("Alto de las piezas"+ pieceHeight);
-    canvas.width = puzzleWidth;
-    canvas.height = puzzleHeight;
-    for(i = 0; i <20; i++) {
-      context.fillStyle= "red";
-      context.fillRect(xPosition, yPosition, pieceWidth, pieceHeight);
-      context.strokeRect(xPosition, yPosition, pieceWidth, pieceHeight);
-      xPosition += pieceWidth;
-      if(xPosition>puzzleWidth) {
-        yPosition += pieceHeight;
-        xPosition = 0;
+    for(i = 0; i < 20 ; i++) {
+      piece = {};
+      piece.xPosition = xAux;
+      piece.yPosition = yAux;
+      pieces.push(piece);
+      /*context.fillStyle= "red";
+      context.fillRect(xAux, yAux, pieceWidth, pieceHeight);
+      context.strokeRect(xAux, yAux, pieceWidth, pieceHeight);*/
+      xAux += pieceWidth;
+      if(xAux > puzzleWidth) {
+        yAux += pieceHeight;
+        xAux = 0;
       }
     }
+    //document.onmousedown = shufflePuzzle;
   }else { // Canvas-unsupported code
     // TODO: Añadir nodo al DOM con un p que diga que no se pue
+  }
+}
+
+/* Shuffleing the pieces basing on the Fisher–Yates shuffle algorithm:*/
+function shuffleArray(arrayPieces) {
+  var shuffleCounter = arrayPieces.length;
+  //We go down the array
+  while(shuffleCounter > 0) {
+    //Getting a random index
+    var index = Math.floor(Math.random*shuffleCounter);
+    shuffleCounter--;
+    var aux = arrayPieces[shuffleCounter];
+    arrayPieces[shuffleCounter] = arrayPieces[index];
+    arrayPieces[index] = aux;
+  }
+  return arrayPieces;
+}
+
+function shufflePuzzle() {
+  pieces = shuffleArray(pieces);
+  context.clearRect(0, 0, puzzleWidth, puzzleHeight);
+  var i, piece;
+  var xAux = 0;
+  var yAux = 0;
+  for(i = 0; i < pieces.length; i++) {
+    piece = pieces[i];
+    piece.xPosition = xAux;
+    piece.yPosition = yAux;
+    console.log("xPosition "+ xPosition)
+    context.drawImage(video, piece.xPosition, piece.yPosition, pieceWidth, pieceHeight, xAux, yAux, pieceWidth, pieceHeight);
+    context.strokeRect(xAux, yAux, pieceWidth, pieceHeight);
+    xAux += pieceWidth;
+      if(xAux>puzzleWidth) {
+        yAux += pieceHeight;
+        xAux = 0;
+      }
   }
 }
