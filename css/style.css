@@ -259,14 +259,28 @@ div#puzzle-board {
 .ref-wrapper {
 	vertical-align: top;
 	display: inline-block;
-	padding: 0em 8%;
+	padding: 0em 5%;
 }
 
-.ref-wrapper li a {
-	width: 100%;
+.ref-wrapper h3 {
+	font-size: 16pt;
 }
-.ref-wrapper li a:hover {
-	border-bottom: 1px solid #fff;
+
+.ref-wrapper li a:after {
+	display: block;
+	width: 0%;
+	content: '';
+	height: 1px;
+	background: #fff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(right, #fff, #04E8A0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #fff, #04E8A0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #fff, #04E8A0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #fff, #04E8A0); /* Standard syntax */ ;
+	transition: all 0.25s cubic-bezier(0.43, 0.94, 0.82, 0.87)
+}
+
+.ref-wrapper li a:hover:after {
+	width: 100%;
 }
 
 /*6. Layer 4: Authors*/
@@ -283,18 +297,19 @@ div#puzzle-board {
 	vertical-align: top;
 }
 .author-wrapper img {
-	max-width: 50%;
-	border: 3px solid;
+    max-width: 50%;
+    border: 3px solid transparent;
     border-radius: 50%;
     box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
 }
-.author-wrapper img#pink {
+.author-wrapper img#pink:hover {
 	border-color: #A846A0;
 }
-.author-wrapper img#green {
+.author-wrapper img#green:hover {
 	border-color: #04E8A0;
 }
-.author-wrapper img#gray {
+.author-wrapper img#gray:hover {
 	border-color: #ddd;
 }
 .author-wrapper div {
