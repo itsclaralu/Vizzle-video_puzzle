@@ -1,19 +1,18 @@
 /* Global variables*/
 var numberPieces = 16;
+var pieces = [numberPieces];
 var puzzleWidth = 0;
 var puzzleHeight = 0;
 var pieceWidth = 0;
 var pieceHeight = 0; 
 var clickCounter = 0; //Will be != 1 if we've already launched the game
 var seconds = 0; //Second counter
-var start;
-var timer;
 var minutes = 0;
+var timer;
 var video;
 var canvas;
 var container;
 var context;
-var pieces = [numberPieces];
 var cursor = {};
   cursor.x = 0;
   cursor.y = 0;
@@ -27,16 +26,18 @@ window.onload = function() {
   canvas = document.getElementById("game-screen");
   container = document.getElementById("puzzle-board");
   video = document.getElementById("video");
-  init();
   video.addEventListener('play', function () {
     drawVideo(video, context, puzzleWidth, puzzleHeight);
-  });  
+  });
+  launchGame();
+}
+function launchGame(){
+  init();
   video.play();
-  console.log("Reproduzco el video");
 }
 
 function init() {
-  if(canvas && canvas.getContext) { //Checking if the nav is compatible
+  if(canvas && canvas.getContext) { //Checking browser compatibility
     context = canvas.getContext('2d');
     // Drawing the game board 
     puzzleWidth = container.offsetWidth;
@@ -49,6 +50,15 @@ function init() {
     console.log("Alto de las piezas"+ pieceHeight);
     canvas.width = puzzleWidth;
     canvas.height = puzzleHeight;
+    video.setAttribute('width', puzzleWidth);
+    video.setAttribute('height', puzzleHeight);
+    button.setAttribute("src", "images/vizzle_play.svg");
+    button.setAttribute("id", "play-button");
+    clearInterval(timer); 
+    clickCounter = 0;
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
   } else { // Canvas-unsupported code
     // TODO: Añadir nodo al DOM con un p que diga que no se pue
   }
@@ -59,6 +69,7 @@ function drawVideo(video, context, width, height) {
     return false;
   //else
   this.context.drawImage(this.video, 0, 0, width, height, 0, 0, width, height);
+  this.context.fillStyle= "rgba(0,0,0,0.9)";
   setTimeout(drawVideo, 1000/60, video, context, width, height); //Play video at 60fps
 }
 
@@ -83,6 +94,7 @@ function switchButton() {
       button.setAttribute("src", "images/vizzle_pause.svg");
       button.setAttribute("id", "pause-button");
       if(clickCounter == 1) { // Launch the game
+          console.log("Cuando inicio el juego, clickCounter = "+ clickCounter);
           video.pause();
           counter();
           timer = setInterval(counter, 1000); //We need to execute counter() each second (1000 miliseconds)
@@ -90,13 +102,15 @@ function switchButton() {
           shufflePuzzle();
       }else { // Resume the game
           timer = setInterval(counter, 1000);
+          console.log("Reanudo el juego, clickCounter = "+ clickCounter);
       }
   }else { // Game paused
       clickCounter++;
+      console.log("Pauso el juego, clickCounter = "+ clickCounter);
       button.setAttribute("src", "images/vizzle_play.svg");
       button.setAttribute("id", "play-button");
       clearInterval(timer);
-      context.fillStyle= "rgba(45,45,45,0.5)";
+
   }
 }
 
@@ -172,7 +186,6 @@ function onClickPiece(click) {
   }
    // Is there a piece?
   thisPiece = checkPiece();
-  console.log(thisPiece);
   if(thisPiece != null) { // If the piece exists
     context.clearRect(thisPiece.actualX, thisPiece.actualY, pieceWidth, pieceHeight);
     context.save();
@@ -264,7 +277,7 @@ function dropPiece() {
 
 function checkWin() {
   context.clearRect(0, 0, puzzleWidth, puzzleHeight);
-  var winner = false;
+  var winner = true;
   var i;
   var piece;
   for(i = 0; i < pieces.length; i++){
@@ -272,15 +285,17 @@ function checkWin() {
     context.drawImage(video, piece.xPosition, piece.yPosition, pieceWidth, pieceHeight, piece.actualX, piece.actualY, pieceWidth, pieceHeight);
     context.strokeStyle="#eee";
     context.strokeRect(piece.actualX, piece.actualY, pieceWidth, pieceHeight);
-    if(piece.actualX == piece.xPosition && piece.actualY == piece.yPosition){
-      winner = true;
+    if((piece.actualX != piece.xPosition) || (piece.actualY != piece.yPosition)){
+      winner = false;
+      console.log(pieces);
     }
+  }
     if(winner){
-      setTimeout(end, 500);
-    }
+      console.log("Congrats, you won!");
+      context.clearRect(0, 0, puzzleWidth, puzzleHeight);
+      pieces = [numberPieces];
+      console.log(pieces);
+      launchGame();
   }
 }
 
-function end(){
-  context.fillStyle= "rgba(45,45,45,0.5)";
-}

@@ -154,13 +154,12 @@ video#video {
 
 .game-container {
     margin: 0 auto;
-    width: 85%;
+    width: 82%;
 }
 
 div#puzzle-board {
 	width: 100%;
 	height: 450px;
-	background-color: #2D2D2D;
 }
 
 .game-bar {
