@@ -155,6 +155,7 @@ video#video {
 .game-container {
     margin: 0 auto;
     width: 82%;
+    max-width: 851px;
 }
 
 div#puzzle-board {

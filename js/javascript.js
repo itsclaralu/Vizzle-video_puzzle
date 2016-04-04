@@ -1,5 +1,9 @@
+/* Constants*/
+var _DIFFICULTY = 3;
+var _TINT = "#A846A0";
+
 /* Global variables*/
-var numberPieces = 4;
+var numberPieces = 0;
 var pieces = [numberPieces];
 var puzzleWidth = 0;
 var puzzleHeight = 0;
@@ -19,7 +23,7 @@ var cursor = {};
 var thisPiece;
 var thisDroppablePiece;
 
-/* Initial set ups*/
+/* Initial JS set ups and game launcher function*/
 window.onload = function() {
   button = document.getElementById("play-button");
   button.addEventListener('click', switchButton);
@@ -31,23 +35,22 @@ window.onload = function() {
   });
   launchGame();
 }
+/*This function launches the game setting up it's difficulty and initial or default values*/
 function launchGame(){
+  numberPieces = setDifficulty(_DIFFICULTY);
   init();
   video.play();
 }
 
+/*This function initializes canvas and video dimensions, and game-bar default values*/
 function init() {
   if(canvas && canvas.getContext) { //Checking browser compatibility
     context = canvas.getContext('2d');
     // Drawing the game board 
     puzzleWidth = container.offsetWidth;
-    console.log("Ancho del puzzle"+ puzzleWidth);
     puzzleHeight = container.offsetHeight;
-    console.log("Alto del puzzle"+ puzzleHeight);
     pieceWidth = puzzleWidth/Math.sqrt(numberPieces);
-    console.log("Ancho de las piezas"+ pieceWidth);
     pieceHeight = puzzleHeight/Math.sqrt(numberPieces);
-    console.log("Alto de las piezas"+ pieceHeight);
     canvas.width = puzzleWidth;
     canvas.height = puzzleHeight;
     video.setAttribute('width', puzzleWidth);
@@ -60,10 +63,36 @@ function init() {
     minutes = 0;
     hours = 0;
   } else { // Canvas-unsupported code
-    // TODO: Añadir nodo al DOM con un p que diga que no se pue
+
   }
 }
 
+/* This function sets up the game hardness*/
+function setDifficulty(difficulty){
+  switch (_DIFFICULTY) {
+    case 1:
+      numberPieces = 4;
+    break;
+    case 2:
+      numberPieces = 9;
+    break;
+    case 3:
+      numberPieces = 16;
+    break;
+    case 4:
+      numberPieces = 25;
+    break;
+    case 5:
+      numberPieces = 36;
+    break;
+    default:
+      numberPieces = 16;
+    break;
+  }
+  return numberPieces;
+}
+
+/* Here we draw the video, showing 60 frames per second*/
 function drawVideo(video, context, width, height) {
   if(this.video.paused || this.video.ended)
     return false;
@@ -73,6 +102,7 @@ function drawVideo(video, context, width, height) {
   setTimeout(drawVideo, 1000/60, video, context, width, height); //Play video at 60fps
 }
 
+/* Implementation of the counter, so that we know how much time the user spends solving the puzzle*/
 function counter() {
   var hours = Math.floor(seconds/3600);
   seconds++;
@@ -87,14 +117,13 @@ function counter() {
   }
 }
 
-/* Switching the button to play/pause*/
+/* Switching the game-bar button to play/pause. */
 function switchButton() {
   if(button.id == "play-button") {
       clickCounter++;
       button.setAttribute("src", "images/vizzle_pause.svg");
       button.setAttribute("id", "pause-button");
       if(clickCounter == 1) { // Launch the game
-          console.log("Cuando inicio el juego, clickCounter = "+ clickCounter);
           video.pause();
           counter();
           timer = setInterval(counter, 1000); //We need to execute counter() each second (1000 miliseconds)
@@ -102,11 +131,9 @@ function switchButton() {
           shufflePuzzle();
       }else { // Resume the game
           timer = setInterval(counter, 1000);
-          console.log("Reanudo el juego, clickCounter = "+ clickCounter);
       }
   }else { // Game paused
       clickCounter++;
-      console.log("Pauso el juego, clickCounter = "+ clickCounter);
       button.setAttribute("src", "images/vizzle_play.svg");
       button.setAttribute("id", "play-button");
       clearInterval(timer);
@@ -114,6 +141,7 @@ function switchButton() {
   }
 }
 
+/* Drawing the initial board*/
 function createBoard() {
   var i, piece;
   var xAux = 0;
@@ -124,7 +152,6 @@ function createBoard() {
       piece.xPosition = xAux;
       piece.yPosition = yAux;
       pieces[i] = piece;
-      context.fillStyle= "rgba(45,45,45,0.5)";
       context.fillRect(xAux, yAux, pieceWidth, pieceHeight);
       xAux += pieceWidth;
       if(xAux >= puzzleWidth) {
@@ -133,7 +160,6 @@ function createBoard() {
       }
     }
   }else { // Canvas-unsupported code
-    // TODO: Añadir nodo al DOM con un p que diga que no se pue
   }
 }
 
@@ -153,6 +179,7 @@ function shuffleArray(arrayPieces) {
   return arrayPieces;
 }
 
+/*Drawing the puzzle with the shuffled pieces*/
 function shufflePuzzle() {
   pieces = shuffleArray(pieces);
   context.clearRect(0, 0, puzzleWidth, puzzleHeight);
@@ -175,6 +202,8 @@ function shufflePuzzle() {
   document.onmousedown = onClickPiece;
 }
 
+/* This function checks out which piece has been clicked. First we determine where the click has happened. Then we find out if there's a piece there.
+This function also implements the drag functionality*/
 function onClickPiece(click) {
   // Finding out where the user clicked
   if(click.offsetX == null){ //Code for Firefox support
@@ -205,18 +234,19 @@ function checkPiece(){
     var i;
     var piece;
     for(i = 0; i < pieces.length; i++){
-        piece = pieces[i];
+      piece = pieces[i];
         if((cursor.x < piece.actualX || cursor.x > (piece.actualX + pieceWidth)) || (cursor.y < piece.actualY || cursor.y > (piece.actualY + pieceHeight)));
-            //We never hit the piece of the stored coordinates
+          //We never hit the piece of the stored coordinates
         else{
-            //Congrats! The piece was hit
-            return piece;
+          //Congrats! The piece was hit
+          return piece;
         }
     }
     //If we don't find the piece, we do nothing
     return null;
 }
 
+/* This function refreshes the puzzle so that we can see the pieces moving. It also determines the pieces where we can move.*/
 function updatePuzzle(move) {
   var i;
   var piece;
@@ -245,7 +275,7 @@ function updatePuzzle(move) {
         thisDroppablePiece = piece;
         context.save();
         context.globalAlpha = 0.5;
-        context.fillStyle = "#A846A0";
+        context.fillStyle = _TINT;
         context.fillRect(thisDroppablePiece.actualX, thisDroppablePiece.actualY, pieceWidth, pieceHeight);
         context.restore();
       }
@@ -260,6 +290,7 @@ function updatePuzzle(move) {
   context.restore();
 }
 
+/* This function implements de dropping functionality*/
 function dropPiece() {
   document.onmousemove = null;
   document.onmouseup = null;
@@ -275,6 +306,7 @@ function dropPiece() {
   checkWin();
 }
 
+/* On each move we need to check if the current position of the pieces fit the expected ones. If so, the user wins and we relaunch the game.*/
 function checkWin() {
   context.clearRect(0, 0, puzzleWidth, puzzleHeight);
   var winner = true;
@@ -287,14 +319,12 @@ function checkWin() {
     context.strokeRect(piece.actualX, piece.actualY, pieceWidth, pieceHeight);
     if((piece.actualX != piece.xPosition) || (piece.actualY != piece.yPosition)){
       winner = false;
-      console.log(pieces);
     }
   }
     if(winner){
       console.log("Congrats, you won!");
       context.clearRect(0, 0, puzzleWidth, puzzleHeight);
       pieces = [numberPieces];
-      console.log(pieces);
       launchGame();
   }
 }
