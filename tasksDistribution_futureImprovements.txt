@@ -1,0 +1,14 @@
+	Tasks Distribution:
+		- Clara Luis Mingueza: 
+			- Logic implementation of the game: JS, canvas including counter and drag&drop functions.
+			- Web design and development: HTML5, CSS3
+			- Creation of SVG elements
+			- Responsive implementation of the web page.
+		- Santiago Morales Bernal: Search of some jQuery plugins. We used them to inspire the final version of the drag&drop utils.
+		- Anabel Ortiz Alegre: Search of the webpage that led us a base to implement the drag&drop system.
+
+	Future improvements:
+		- The edge pieces sometimes seemes affected by the game-bar. This is caused because the cursor coordinates depend on the screen size. On the contrary, the piece position depends on the canvas size.
+		- Dim the lights implementation: We'd like the screen to turn dark so what it would be nicer to play the game.
+		- Different forms for the pieces: real puzzle pieces, hexagons, etc.
+		- Improvements of the game's responsive/adaptativity so that we can play on ther devices: tablets, smartphones, smartwatches, etc.
