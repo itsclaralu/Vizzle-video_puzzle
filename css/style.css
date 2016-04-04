@@ -255,6 +255,19 @@ div#puzzle-board {
 	color: #fff;
     padding: 5%;
 }
+.ref-wrapper {
+	vertical-align: top;
+	display: inline-block;
+	padding: 0em 8%;
+}
+
+.ref-wrapper li a {
+	width: 100%;
+}
+.ref-wrapper li a:hover {
+	border-bottom: 1px solid #fff;
+}
+
 /*6. Layer 4: Authors*/
 .fourth {
 	background-color: #2D2D2D;
