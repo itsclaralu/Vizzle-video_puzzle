@@ -1,5 +1,5 @@
 /* Global variables*/
-var numberPieces = 16;
+var numberPieces = 4;
 var pieces = [numberPieces];
 var puzzleWidth = 0;
 var puzzleHeight = 0;
